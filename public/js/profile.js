@@ -8,9 +8,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
 //displays date and time
-  dateDisplay.innerHTML = ` Current Date: ${year}-${
+  dateDisplay.innerHTML = ` Date: ${year}-${
     month + 1
-  }-${day}<br> Current Time: ${hours}:${minutes}`;
+  }-${day}<br> Time: ${hours}:${minutes}`;
 //defines password variables
   const password = document.getElementById("password");
   const confirmPassword = document.getElementById("confirm-password");
