@@ -11,9 +11,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
 //displays current date and time
-  dateDisplay.innerHTML = ` Current Date: ${year}-${
+  dateDisplay.innerHTML = ` Date: ${year}-${
     month + 1
-  }-${day}<br> Current Time: ${hours}:${minutes}`;
+  }-${day}<br> Time: ${hours}:${minutes}`;
 
   const form = document.querySelector("form");
   const submitButton2 = document.getElementById("save");
