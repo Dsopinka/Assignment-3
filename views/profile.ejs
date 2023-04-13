@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyNet Smart Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <header><h1 class="welcome">Welcome To SkyNet</h1></header>
+  <div class="datefont" id="date"></div>
+  <body>
+    <%-include("layouts/menu")-%>
+    <main>
+      <div class="profile">
+        <h1>Profile Details</h1>
+        <img
+          src="https://previews.123rf.com/images/kritchanut/kritchanut1406/kritchanut140600093/29213195-male-silhouette-avatar-profile-picture.jpg"
+          width="200"
+          alt="Default profile picture"
+        />
+        <p>Personal Information</p>
+        <form class="pinfo">
+          <label for="fname">First Name:&nbsp;</label
+          ><input id="fname" type="text" value="Jane" /><br />
+          <label for="lname">Last Name:&nbsp;</label
+          ><input id="lname" type="text" value="Doe" /><br />
+          <label for="email">Email:&nbsp;</label
+          ><input id="email" type="email" value="JaneDoe@gmail.com" /><br />
+          <label for="birthday">Date Of Birth:&nbsp;</label
+          ><input id="birthday" type="date" /><br />
+          <label for="password">Password:&nbsp;</label
+          ><input
+            id="password"
+            type="password"
+            pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            required
+            title="At least 8 characters and at least 1 lower and upper-case character"
+          /><br />
+          <label for="confirm-password">Confirm Password:&nbsp;</label
+          ><input
+            id="confirm-password"
+            type="password"
+            pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            required
+          /><br />
+          <button type="submit" id="submit-password">Submit</button>
+          <input type="reset" />
+        </form>
+      </div>
+      <script src="js/profile.js"></script>
+    </main>
+    <footer>
+      <%- include("layouts/footer")-%>
+    </footer>
+  </body>
+</html>

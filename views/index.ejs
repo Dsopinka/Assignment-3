@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyNet Smart Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <header><h1 class="welcome">Welcome To SkyNet</h1></header>
+  <div class="datefont" id="date"></div>
+  <body>
+    <main>
+      <%-include("layouts/menu")-%>
+      <h2 class="deviceName">Device Name: Home</h2>
+      <p class="light-setting">
+        Lighting Mode:&nbsp;<strong id="selected-option">Off</strong>&nbsp;
+        Notifications:&nbsp;<strong id="selected-option2">Off</strong>&nbsp;
+        Tempature:&nbsp;<strong id="selected-option3">19°C</strong>
+        <span class="temp-timer">&nbsp;Temporary Temperature: <strong id="selected-option4"></strong></span>
+      </p>
+      <div class="container">
+        <div class="light-mode">
+          <h2 class="light-title">Lighting Mode:</h2>
+          <form>
+            <input type="radio" id="off" name="selectOne" value="Off" checked />
+            <label for="off" class="radio">Off</label><br />
+            <input type="radio" id="away" name="selectOne" value="Away" />
+            &nbsp;&nbsp;&nbsp;&nbsp;<label for="away" class="radio">Away</label
+            ><br />
+            <input type="radio" id="eco" name="selectOne" value="Eco" />
+            <label for="eco" class="radio">Eco</label><br />
+            <input type="radio" id="full" name="selectOne" value="Full" />
+            <label for="full" class="radio">Full</label><br />
+            <input type="button" id="save" value="Save" />
+          </form>
+        </div>
+        <div class="info">
+          <h2>Personal Information:</h2>
+          <form class="postTemp">
+            <label for="postal-code">Postal Code:</label>
+            <input
+              type="text"
+              id="postal-code"
+              pattern="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"
+              required
+              value="A1A 1A1"
+              title="Please enter a valid Canadian postal code in the format A1A 1A1"
+            /><br />
+            <label>Notifications:</label>
+            <input type="radio" name="oneOption" id="On" value="On" required />
+            <label for="On" class="radio">On</label>
+            <input type="radio" name="oneOption" id="Off" value="Off" checked />
+            <label for="Off" class="radio">Off</label><br />
+
+            <label>Tempature Select:</label>
+            <span>10C</span>
+            <input
+              type="range"
+              id="temp-slider"
+              min="10"
+              max="25"
+              step="0.5"
+              value="19"
+            />
+            <span>25C</span><br />
+            <label class="temp-time">Temporary Temp:</label><br>
+           <input type="number" id="hours" min="0" max="24" step="1" placeholder="Hours">
+           <input type="number" id="minutes" min="0" max="60" step="1" placeholder="Minutes"><br>
+
+            <input type="button" id="submit-3" value="Save" />
+            <input type="reset" id="reset-button" />
+          </form>
+          
+        </div>
+      </div>
+      <script src="js/script.js"></script>
+    </main>
+    <footer>
+      <%- include("layouts/footer")-%>
+    </footer>
+  </body>
+</html>

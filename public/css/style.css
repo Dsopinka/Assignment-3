@@ -1,0 +1,337 @@
+/* Top Navigation Bar */
+.topnav {
+  background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: #12c2e9;
+  background-color: #fff;
+}
+/* Welcome Section */
+.welcome {
+  text-align: center;
+  font-size: 50px;
+  padding: 50px 0;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Light Mode Section */
+.light-mode {
+  background-color: #f2f2f2;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 50px;
+  margin: 20px;
+  width: 40%;
+  text-align: center;
+}
+
+/* Info Section */
+.info {
+  width: 40%;
+  background-color: #f2f2f2;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 50px;
+  margin: 20px;
+  text-align: center;
+}
+
+.profile {
+  text-align: center;
+  padding-top: 10%;
+  background-color: #f2f2f2;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 50px;
+  margin: 20px;
+}
+
+.deviceName {
+  text-align: center;
+}
+
+.light-setting {
+  text-align: center;
+}
+
+input[type="button"] {
+  background-color: #12c2e9;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input[type="button"]:hover {
+  background-color: #e53935;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  background-color: #12c2e9;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input[type="reset"]:hover {
+  background-color: #e53935;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #12c2e9;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+button[type="submit"]:hover {
+  background-color: #e53935;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="birthday"] {
+  display: inline-block;
+  background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  padding: 10px 15px;
+  margin: 2px 0;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px #333;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="birthday"]:focus {
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 5px #12c2e9;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+  display: none;
+  text-align: center;
+}
+label.radio {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+label.radio:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border: 2px solid cadetblue;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+input[type="radio"]:checked + label.radio:before {
+  background-color: black;
+}
+
+#image_list a {
+  display: none;
+}
+
+#main_image {
+  display: block;
+  margin: 0 auto;
+  border: 20px solid #8B4513; 
+  box-shadow: 5px 5px 5px #888; 
+  padding: 10px;
+  max-width: 1000px;
+}
+
+#slideshow {
+  text-align: center;
+}
+
+#next {
+  background-color: blue; 
+  border: none; 
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#next:hover {
+  background-color: cyan;
+}
+
+#prev {
+  background-color: blue; 
+  border: none; 
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#prev:hover {
+  background-color: cyan;
+}
+
+#caption {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.slide-title {
+  text-align: center;
+}
+
+footer {
+  background-color: rgba(18, 194, 233, 0.8);
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer li {
+  display: inline-block;
+  margin: 0 10px;
+  line-height: 80px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+footer a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+footer a.active {
+  color: #12c2e9;
+  background-color: #fff;
+}
+
+/* Center the links in the middle of the page */
+footer a {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+footer::before,
+footer::after {
+  content: "";
+  flex: 1 1;
+}
+
+.terms{
+  text-align: center;
+}
+
+.policy-text {
+  overflow: auto;
+  max-width: 50%;
+  padding-left: 25%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#privacy {
+  text-align: center;
+}
+
+.temp-time {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 42%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#hours {
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 5px #12c2e9;
+  background-color: #f2f2f2;
+  border: none;
+  padding: 10px 15px;
+  margin: 2px 0;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px #12c2e9;
+  transition: all 0.2s ease-in-out;
+}
+
+#minutes {
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 5px #12c2e9;
+  background-color: #f2f2f2;
+  border: none;
+  padding: 10px 15px;
+  margin: 2px 0;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px #12c2e9;
+  transition: all 0.2s ease-in-out;
+}

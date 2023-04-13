@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cars!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <%-include("layouts/menu")-%>
+    <main>
+        <h1 class="slide-title">Car Slide Show!</h1>
+
+        <div id="image_list">
+            <a href="images/911.jpg" title="Beautiful Mudered Out 911"></a>
+            <a href="images/A12.jpg" title="My Favourite Ferrari"></a>
+            <a href="images/Ferrari.jpg" title="My Gosh"></a>
+            <a href="images/koenigsegg.jpg" title="Only Cool Thing About Hamilton"></a>
+            <a href="images/vette.jpg" title="Why Wouldn't I Add A Vette?"></a>
+            <a href="images/CRV.jpg" title="What A Lemon!!!!"></a>
+        </div>
+    
+        <div id="slideshow">
+            <img id="main_image" src="images/911.jpg" alt="Beautiful murdered out 911">
+            <div id="caption">Beautiful murdered out 911</div>
+            <div id="controls">
+                <button id="prev">Prev</button>
+                <button id="next">Next</button>
+            </div>
+        </div>
+
+        <script src="js/slide-show.js"></script>
+    </main>
+    <footer>
+        <%- include("layouts/footer")-%>
+      </footer>
+</body>
+</html>
