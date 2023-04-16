@@ -27,18 +27,15 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   let user = req.session.user;
-  
- 
+
   res.render("index", {user});
 });
 
 app.get("/profile", (req, res) => {
   let user = req.session.user;
 
-
   res.render("profile", {user});
 });
-
 
 app.get("/slide-show", (req, res) => {
   res.render("slide-show");
@@ -48,18 +45,24 @@ app.get("/terms", (req, res) => {
   res.render("terms");
 });
 
-
 app.post("/update-profile", (req, res) => {
   console.log(req.body);
 
+  // Store the user data in the session
   req.session.user = req.body;
 
   res.redirect("/profile");
-
 });
 
-app.post('/update-index', (req, res) => {
-  req.session.user = req.session;
+/*app.post("/update-index", (req, res) => {
+  req.session.user = req.body;
+  res.status(200).json(req.body);
+});*/
 
-  res.redirect("/")
+
+app.get('/get-user-data', (req, res) => {
+  res.json(req.session.user || {});
 });
+
+
+

@@ -21,9 +21,10 @@
           alt="Default profile picture"
         />
         <p>Personal Information</p>
-        <form class="pinfo">
-          <label for="fname">First Name:&nbsp;</label><br/><input id="fname" type="text" value="Jane" /><br/>
-          <label for="lname">Last Name:&nbsp;</label><br/>
+        <form class="pinfo" action="/update-profile" method="post">
+          <label for="fname" name="fname">First Name:&nbsp;</label><br/>
+          <input id="fname" type="text" value="Jane" /><br/>
+          <label for="lname" name="lname">Last Name:&nbsp;</label><br/>
           <input id="lname" type="text" value="Doe" /><br/>
           <label for="birthday">Date Of Birth:&nbsp;</label><br/>
           <input class="dobstyle" id="birthday" type="date" />

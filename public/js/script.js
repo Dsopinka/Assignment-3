@@ -1,7 +1,189 @@
-// select an element by its selector
 const $ = (selector) => document.querySelector(selector);
-//loads DOM
+let countdownTimer;
+
+function saveUserData(data) {
+  localStorage.setItem("userData", JSON.stringify(data));
+}
+
+function loadUserDataFromLocalStorage() {
+  const userDataJSON = localStorage.getItem("userData");
+  return userDataJSON ? JSON.parse(userDataJSON) : {};
+}
+
+function getRemainingTime() {
+  const timerDisplay = document.getElementById("selected-option4");
+  const timeParts = timerDisplay.textContent.split(":");
+
+  if (timeParts.length !== 3) {
+    return 0;
+  }
+
+  const hours = parseInt(timeParts[0], 10);
+  const minutes = parseInt(timeParts[1], 10);
+  const seconds = parseInt(timeParts[2], 10);
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+function loadUserData() {
+  const data = loadUserDataFromLocalStorage();
+  let remainingTime = 0;
+
+  if (data.selectOne) {
+    document.getElementById("selected-option").textContent = data.selectOne;
+    document.querySelector(`input[name="selectOne"][value="${data.selectOne}"]`).checked = true;
+  }
+  if (data.oneOption) {
+    document.getElementById("selected-option2").textContent = data.oneOption;
+    document.querySelector(`input[name="oneOption"][value="${data.oneOption}"]`).checked = true;
+  }
+  if (data.tempature) {
+    document.getElementById("selected-option3").textContent = data.tempature + "°C";
+    document.getElementById("temp-slider").value = data.tempature;
+  }
+  if (data.postalCode) {
+    document.getElementById("postal-code").value = data.postalCode;
+  }
+  if (data.tempHours) {
+    document.getElementById("hours").value = data.tempHours;
+  }
+  if (data.tempMinutes) {
+    document.getElementById("minutes").value = data.tempMinutes;
+  }
+
+  if (data.remainingTime) {
+    startCountdownTimer(data.remainingTime);
+  }
+
+  if (data.timerEndTime) {
+    remainingTime = Math.max(
+      0,
+      Math.floor((new Date(data.timerEndTime) - new Date()) / 1000)
+    );
+
+    startCountdownTimer(remainingTime);
+  }
+}
+
+function startCountdownTimer(remainingTime) {
+  const timerDisplay = document.getElementById("selected-option4");
+
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+  }
+
+  countdownTimer = setInterval(() => {
+    if (remainingTime <= 0) {
+      clearInterval(countdownTimer);
+      timerDisplay.innerHTML = "";
+    } else {
+      remainingTime--;
+      const hours = Math.floor(remainingTime / 3600);
+      const minutes = Math.floor((remainingTime % 3600) / 60);
+      const seconds = remainingTime % 60;
+      timerDisplay.innerHTML = `${hours
+        .toString()
+        .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(
+        2,
+        "0"
+      )}`;
+    }
+  }, 1000);
+}
+  
+  
+  
+      function handleSubmit() {
+        const selectOneValue = document.querySelector(
+          'input[name="selectOne"]:checked'
+        ).value;
+        const formData = new FormData(document.querySelector("form"));
+        const timerEndTime = new Date(
+          Date.now() + getRemainingTime() * 1000
+        ).toISOString();
+      
+        // Clear the existing countdown timer
+        if (countdownTimer) {
+          clearInterval(countdownTimer);
+        }
+      
+        // Calculate the new remaining time based on the new duration selected by the user
+        
+        const durationHoursValue = parseInt(formData.get("tempHours"), 10) || 0;
+        const durationMinutesValue = parseInt(formData.get("tempMinutes"), 10) || 0;
+        let remainingTime = durationHoursValue * 3600 + durationMinutesValue * 60;
+
+
+      
+        // Save the remaining time and timer end time in local storage
+        const data = {
+          selectOne: formData.get("selectOne"),
+          postalCode: formData.get("postalCode"),
+          oneOption: formData.get("oneOption"),
+          tempature: formData.get("tempature"),
+          tempHours: formData.get("tempHours"),
+          tempMinutes: formData.get("tempMinutes"),
+          remainingTime: remainingTime,
+          timerEndTime: timerEndTime,
+        };
+        saveUserData(data);
+      
+        // Load the user data from localStorage and update the page
+        loadUserData();
+      
+        startCountdownTimer(remainingTime);
+
+      
+        // Navigate back to the home page
+        window.history.pushState({}, "", "/");
+      }
+
+      function resetForm() {
+        // Reset form values
+        document.getElementById("selected-option").textContent = "Off";
+        document.getElementById("selected-option2").textContent = "Off";
+        document.getElementById("selected-option3").textContent = "19°C";
+        document.getElementById("postal-code").value = "A1A 1A1";
+        document.getElementById("hours").value = "";
+        document.getElementById("minutes").value = "";
+        document.getElementById("selected-option4").innerHTML = "";
+      
+        // Reset radio buttons
+        const radioButtons1 = document.getElementsByName("selectOne");
+        for (const radio of radioButtons1) {
+          if (radio.value === "Off") {
+            radio.checked = true;
+            break;
+          }
+        }
+      
+        const radioButtons2 = document.getElementsByName("oneOption");
+        for (const radio of radioButtons2) {
+          if (radio.value === "Off") {
+            radio.checked = true;
+            break;
+          }
+        }
+      
+        // Reset temperature slider
+        document.getElementById("temp-slider").value = 19;
+      
+        // Clear the countdown timer
+        if (countdownTimer) {
+          clearInterval(countdownTimer);
+        }
+      
+        // Remove data from localStorage
+        localStorage.removeItem("userData");
+      }
+      
+      
+      
+  
+
+
+ //loads DOM
 window.addEventListener("DOMContentLoaded", (event) => {
+  loadUserData();
   const dateDisplay = document.getElementById("date");
 // gets current time and date
   const date = new Date();
@@ -26,17 +208,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const selectedOption = document.getElementById("selected-option");
     selectedOption.innerHTML = "<strong>" + selectedValue + "</strong>";
     selectedOption.textContent = selectedValue;
+
+    handleSubmit();
   });
+  
   //when button is clicked submits second set of options
   const form2 = document.querySelector(".postTemp");
   const submitButton3 = document.getElementById("submit-3");
   submitButton3.addEventListener("click", (event) => {
+    event.preventDefault();
     const selectedValue2 = document.querySelector(
       'input[name="oneOption"]:checked'
     ).value;
     const selectedOption2 = document.getElementById("selected-option2");
     selectedOption2.innerHTML = "<strong>" + selectedValue2 + "</strong>";
     selectedOption2.textContent = selectedValue2;
+    
+  handleSubmit();
+
   });
 //updates the temperature value from the temp slider
   const slider = document.querySelector("#temp-slider");
@@ -51,25 +240,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const durationMinutesInput = document.getElementById("minutes");
 
   //gets values upon submit
-  submitButton3.addEventListener("click", function(event) {
+  submitButton3.addEventListener("click", function (event) {
     event.preventDefault();
     const tempValue = tempInput.value;
-    const durationHoursValue = durationHoursInput.value;
-    const durationMinutesValue = durationMinutesInput.value;
-
   
     // Set the new temperature and display it on the page
     const tempDisplay = document.getElementById("selected-option3");
     tempDisplay.innerHTML = `${tempValue}°C`;
-    const initialTemp = tempInput.defaultValue
-    
+    const initialTemp = tempInput.defaultValue;
+    console.log(submitButton3)
+  
+  });
+  
   
     // Start the countdown timer
     const timerDisplay = document.getElementById("selected-option4");
     const timerDuration = durationHoursValue * 3600 + durationMinutesValue * 60; // duration in seconds
     let remainingTime = timerDuration;
   
-    const timerInterval = setInterval(() => {
+      const timerInterval = setInterval(() => {
       const hours = Math.floor(remainingTime / 3600);
       const minutes = Math.floor((remainingTime % 3600) / 60);
       const seconds = remainingTime % 60;
@@ -86,15 +275,35 @@ window.addEventListener("DOMContentLoaded", (event) => {
       } else {
         remainingTime--;
       }
-    }, 1000);
-  });
+    }, 1000); 
+
+    
+  
+    // Add event listener for popstate event to handle when user navigates back or forward
+    window.addEventListener("load", () => {
+      clearInterval(countdownTimer);
+      loadUserData();
+    });
+
+
   
   
-
-const form3 = document.querySelector('form');
-const saveButton = document.querySelector('#save');
-const submit3Button = document.querySelector('#submit-3');
-
-
-
+  
 });
+  
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
