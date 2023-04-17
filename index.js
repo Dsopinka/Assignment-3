@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
-const PORT = 5000;
+const PORT = 4000;
 
 app.listen(PORT, () => {
   console.log("App listening on port ", PORT);
@@ -52,6 +52,10 @@ app.post("/update-profile", (req, res) => {
   req.session.user = req.body;
 
   res.redirect("/profile");
+});
+
+app.get("/rock-paper", (req, res) => {
+  res.render("rock-paper");
 });
 
 /*app.post("/update-index", (req, res) => {

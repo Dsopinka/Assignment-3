@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <%-include("layouts/menu")-%>
+    <main>
+        <h1 class="slide-title">Rock Paper Scissors</h1>
+
+        <div id="image_list">
+            <a href="images/rock.png" title="Rock"></a>
+            <a href="images/Paper.jpg" title="Paper"></a>
+            <a href="images/scissors.png" title="Scissors"></a>
+        </div>
+    
+        <div id="slideshow">
+            <img id="main_image" src="images/rockpaperscissors.png" alt="Rock Paper Scissors">
+            <div id="caption">Rock Paper Scissors</div>
+            <div id="controls">
+                <button id="prev">Rock</button>
+                <button id="next">Paper</button>
+                <button id="next">Scissors</button>
+            </div>
+        </div><br><br>
+
+        <script src="js/rock-paper.js"></script>
+    </main>
+    <footer>
+        <%- include("layouts/footer")-%>
+      </footer>
+</body>
+</html>
