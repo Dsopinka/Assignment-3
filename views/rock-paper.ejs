@@ -10,10 +10,7 @@
     <%-include("layouts/menu")-%>
     <main>
         <h1 class="slide-title">Rock Paper Scissors</h1>
-
-        <div id="userChoice"></div>
-        <div id="computerChoice"></div>
-        <div id="result"></div>
+        
 
         <div id="image_list" style="display:none;">
             <a id="rockImage" href="images/rock.png" title="Rock"></a>
@@ -24,6 +21,12 @@
         <div id="slideshow">
             <img id="main_image" src="images/rockpaperscissors.png" alt="Rock Paper Scissors">
             <div id="caption">Rock Paper Scissors</div>
+            
+        <div class="container">
+            <div id="userChoice">you:</div>
+            <div id="computerChoice">computer:</div>
+            <div id="result">result:</div>
+        </div>
             <div id="controls">
                 <button id="rock" class="choice">Rock</button>
                 <button id="paper" class="choice">Paper</button>
